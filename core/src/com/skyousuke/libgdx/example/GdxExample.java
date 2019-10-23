@@ -1,25 +1,52 @@
 package com.skyousuke.libgdx.example;
 
-import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.InputProcessor;
 
-public abstract class GdxExample extends InputAdapter implements ApplicationListener {
+public abstract class GdxExample extends Game implements InputProcessor {
 
-    public void create () {
+    @Override
+    public void create() {
+
     }
 
-    public void resume () {
+    @Override
+    public boolean keyDown(int keycode) {
+        return false;
     }
 
-    public void render () {
+    @Override
+    public boolean keyUp(int keycode) {
+        return false;
     }
 
-    public void resize (int width, int height) {
+    @Override
+    public boolean keyTyped(char character) {
+        return false;
     }
 
-    public void pause () {
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        return false;
     }
 
-    public void dispose () {
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
     }
 }

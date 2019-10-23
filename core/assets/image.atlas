@@ -1,0 +1,55 @@
+
+image.png
+size: 512,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+background
+  rotate: false
+  xy: 2, 138
+  size: 360, 544
+  orig: 360, 544
+  offset: 0, 0
+  index: -1
+bird
+  rotate: false
+  xy: 100, 100
+  size: 54, 36
+  orig: 54, 36
+  offset: 0, 0
+  index: 0
+bird
+  rotate: false
+  xy: 364, 593
+  size: 54, 36
+  orig: 54, 36
+  offset: 0, 0
+  index: 1
+bird
+  rotate: false
+  xy: 435, 646
+  size: 54, 36
+  orig: 54, 36
+  offset: 0, 0
+  index: 2
+floor
+  rotate: false
+  xy: 2, 40
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 0
+pipeBody
+  rotate: false
+  xy: 364, 631
+  size: 69, 51
+  orig: 69, 51
+  offset: 0, 0
+  index: -1
+pipeHead
+  rotate: false
+  xy: 2, 2
+  size: 81, 36
+  orig: 81, 36
+  offset: 0, 0
+  index: -1
