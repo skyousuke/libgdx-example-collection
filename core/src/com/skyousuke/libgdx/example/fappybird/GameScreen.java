@@ -77,8 +77,7 @@ public class GameScreen extends AbstractGameScreen implements CollisionSystem.Co
         init();
     }
 
-    private void init()
-    {
+    private void init() {
         if (bird != null)
             ashlyEngine.removeEntity(bird);
 
@@ -86,9 +85,6 @@ public class GameScreen extends AbstractGameScreen implements CollisionSystem.Co
         ashlyEngine.addEntity(bird);
 
         ComponentMappers.cameraMapper.get(cameraEntity).target = bird;
-
-        gameStart = false;
-        gameOver = false;
 
         if (worldListener != null)
             worldListener.gameRestart();
@@ -102,7 +98,9 @@ public class GameScreen extends AbstractGameScreen implements CollisionSystem.Co
 
         ashlyEngine.getSystem(CollisionSystem.class).setProcessing(true);
 
-        score = 0;
+        gameStart = false;
+        gameOver = false;
+        setScore(0);
     }
 
     @Override
