@@ -6,4 +6,5 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class VisualComponent implements Component {
 
     public TextureRegion region = null;
+    public int zIndex = 0;
 }

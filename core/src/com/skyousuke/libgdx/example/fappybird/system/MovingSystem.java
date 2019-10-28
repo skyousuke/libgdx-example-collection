@@ -1,34 +1,28 @@
 package com.skyousuke.libgdx.example.fappybird.system;
 
-import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.skyousuke.libgdx.example.fappybird.component.BirdComponent;
+import com.skyousuke.libgdx.example.fappybird.component.ComponentMappers;
 import com.skyousuke.libgdx.example.fappybird.component.MovingComponent;
 import com.skyousuke.libgdx.example.fappybird.component.TransformComponent;
 
-public class BirdMovingSystem extends IteratingSystem {
+public class MovingSystem extends IteratingSystem {
 
     private static final float SPEED_LIMIT_X = 1000;
     private static final float SPEED_LIMIT_Y = 420;
 
-    private ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
-    private ComponentMapper<MovingComponent> movingMapper = ComponentMapper.getFor(MovingComponent.class);
-//    private ComponentMapper<BirdComponent> birdMapper = ComponentMapper.getFor(BirdComponent.class);
-
-    public BirdMovingSystem() {
-        super(Family.all(TransformComponent.class, MovingComponent.class, BirdComponent.class).get());
+    public MovingSystem() {
+        super(Family.all(MovingComponent.class).get());
     }
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        TransformComponent transform = transformMapper.get(entity);
-        MovingComponent moving = movingMapper.get(entity);
-//        BirdComponent bird = birdMapper.get(entity);
+        TransformComponent transform = ComponentMappers.transformMapper.get(entity);
+        MovingComponent moving = ComponentMappers.movingMapper.get(entity);
 
         if (Float.compare(moving.velocity.x, 0) != 0) {
             setPositionX(transform.position.x + moving.velocity.x * deltaTime, transform.position, transform.bound);
