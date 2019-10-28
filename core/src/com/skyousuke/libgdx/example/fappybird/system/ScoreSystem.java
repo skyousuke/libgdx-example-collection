@@ -44,10 +44,32 @@ public class ScoreSystem extends EntitySystem {
 
                 if (!pipeComponent.birdPassedOver && pipeHeadTransform.position.x + pipeHeadTransform.dimension.x * 0.5f < birdTransform.position.x) {
                     pipeComponent.birdPassedOver = true;
+
+                    Entity nearPipe = findNearPipe(pipe);
+                    if (nearPipe != null)
+                        ComponentMappers.pipeMapper.get(nearPipe).birdPassedOver = true;
+
                     if (listener != null)
                         listener.score();
                 }
             }
         }
+    }
+
+    private Entity findNearPipe(Entity pipe) {
+        PipeComponent pipeComponent = ComponentMappers.pipeMapper.get(pipe);
+        TransformComponent pipeHeadTransform = ComponentMappers.transformMapper.get(pipeComponent.pipeHead);
+
+        for (int i = 0; i < pipes.size(); i++) {
+            Entity otherPipe = pipes.get(i);
+            if (otherPipe != pipe) {
+                PipeComponent otherPipeComponent = ComponentMappers.pipeMapper.get(otherPipe);
+                TransformComponent otherPipeHeadTransform = ComponentMappers.transformMapper.get(otherPipeComponent.pipeHead);
+
+                if (Math.abs(pipeHeadTransform.position.x - otherPipeHeadTransform.position.x) < 1)
+                    return otherPipe;
+            }
+        }
+        return null;
     }
 }
